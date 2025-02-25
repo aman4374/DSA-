@@ -487,11 +487,100 @@
 // }
 
 
+// #include<iostream>
+// using namespace std;
+
+// int main() {
+//     int a = 3*3-3/3+3;
+//     cout<<a<<endl;
+//     return 0;
+// }
+
+
+
+
+
+
+///                2SUM
+
+// #include<iostream>
+// #include<vector>
+// using namespace std;
+
+// vector<int> twosum(int arr[], int n, int tar) {
+//     for(int i = 0; i < n; i++) {
+//         for(int j = i + 1; j < n; j++) {
+//             if(arr[i] + arr[j] == tar) {
+//                 return {i, j}; // returning a vector
+//             }
+//         }
+//     }
+//     return {-1, -1}; // returning an invalid pair when no solution is found
+// }
+
+// int main() {
+//     int arr[5] = {5, 2, 11, 7, 15};
+//     int size = 5;
+//     int tar = 9;
+
+//     vector<int> result = twosum(arr, size, tar);
+//     if(result[0] != -1 && result[1]!=-1) {
+//         cout << "Indices: " << result[0] << "," << result[1] << endl;
+//     } else {
+//         cout << "No pair found!" << endl;
+//     }
+//     return 0;
+// }
+
+
+
+
+// better approach is by 2 pointer approach 
+
 #include<iostream>
+#include<vector>
+#include<algorithm>
 using namespace std;
 
+vector<int> twoSum(vector<int>& arr, int target) {
+    // Sorting the array along with original indices
+    vector<pair<int, int>> sortedArr;
+    for (int i = 0; i < arr.size(); i++) {
+        sortedArr.push_back({arr[i], i}); // Storing {value, original index}
+    }
+
+    sort(sortedArr.begin(), sortedArr.end());
+
+    // Two-pointer approach
+    int start = 0, end = sortedArr.size() - 1;
+    
+    while (start < end) {
+        int sum = sortedArr[start].first + sortedArr[end].first;
+
+        if (sum == target) {
+            return {sortedArr[start].second, sortedArr[end].second}; // Return original indices
+        }
+        else if (sum < target) {
+            start++;
+        }
+        else {
+            end--;
+        }
+    }
+
+    return {-1, -1}; // If no pair found
+}
+
 int main() {
-    int a = 3*3-3/3+3;
-    cout<<a<<endl;
+    vector<int> arr = {5, 2, 11, 7, 15};
+    int target = 9;
+
+    vector<int> result = twoSum(arr, target);
+    if (result[0] != -1) {
+        cout << "Indices: " << result[0] << "," << result[1] << endl;
+    } else {
+        cout << "No pair found!" << endl;
+    }
+
     return 0;
 }

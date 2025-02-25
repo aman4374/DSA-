@@ -23,11 +23,11 @@
 //     int n;
 //     cin >> n;
 
-//     vector<int> dp(n + 1);
+//     vector<int> dp(n + 1,-1);
 
-//     for(int i = 0; i <= n; i++) {  // Fixing the loop
-//         dp[i] = -1;
-//     }
+//     // for(int i = 0; i <= n; i++) {  // Fixing the loop
+//     //     dp[i] = -1;
+//     // }
 
 //     cout << fib(n, dp) << endl;
 //     return 0;
@@ -35,6 +35,7 @@
 
 
 // DP USING TABULATION METHOD
+
 // #include<iostream>
 // #include<vector>
 // using namespace std;
@@ -69,28 +70,28 @@
 
 //optimize same code for space optimization
 
-#include<iostream>
-using namespace std;
+// #include<iostream>
+// using namespace std;
 
-int main() {
-    int n;
-    cin>>n;
+// int main() {
+//     int n;
+//     cin>>n;
 
-    int prev1 = 1;
-    int prev2 = 0;
+//     int prev1 = 1;
+//     int prev2 = 0;
 
-    if(n==0) return prev2;
+//     if(n==0) return prev2;
 
-    for(int i=2;i<=n;i++){
-        int curr = prev1+prev2;
+//     for(int i=2;i<=n;i++){
+//         int curr = prev1+prev2;
 
-        //shift logic
-        prev2= prev1;
-        prev1 = curr;
-    }
-    cout<<prev2<<endl;
+//         //shift logic
+//         prev2= prev1;
+//         prev1 = curr;
+//     }
+//     //cout<<prev2<<endl;
 
-    cout<<prev1<<endl;
+//     cout<<prev1<<endl;
 
-    return 0;
-}
+//     return 0;
+// }
